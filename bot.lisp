@@ -1,8 +1,8 @@
-(defpackage :vy-phan
+(defpackage :bot
   (:use "COMMON-LISP" "COMMON-LISP-USER")
   (:export "MAKE-COMPUTER-MOVE"))
 
-(in-package :vy-phan)
+(in-package :bot)
 
 (defun alpha-beta (game current-depth max-depth
 		           is-maxs-turn-p expand terminal-p evaluate
@@ -13,8 +13,6 @@ expand takes one argument (a game) and gives all the immediate child games for t
 terminal-p takes one argument (a game) and returns true if the game is over or not.
 evaluate takes TWO arguements (a game and the is-maxs-turn-p function) and provides a quality
 assessment of the game for 'max', from min-wins (-1000) to max-wins (1000)."
-
-;;; IMPLEMENT ME
   (declare (type fixnum current-depth max-depth))
   ;; Base case:
   (if (or (funcall terminal-p game) (>= current-depth max-depth))
@@ -248,18 +246,7 @@ if it's max's turn to play."
 
 	(progn
 
-	  ;;; IMPLEMENT ME
-	  ;; in this block, do your code which returns a heuristic
-	  ;; evaluation of the system.  Feel free to create an outside function
-	  ;; and call it if you don't want all the code here.
-
-	  ;;0   ;; by default we're returning 0 (draw).  That's obviously wrong.
-
-
-
-
-
-      ;; STUDENT's NOTE OF EVALUATION FUNCTION:
+      ;; NOTE OF EVALUATION FUNCTION:
       ;; the evaluation here is rather simple due to all of the above helper functions
       ;; The overall score of a game state is calculated in the score-color, but basically
       ;; they are the sum of the weighted number of checkers in a row. Black's score is positive
@@ -276,13 +263,6 @@ if it's max's turn to play."
           (if (= (turn game) 1)
               (* -1 (score-color game))
               (score-color game))))
-
-
-    
-	  ;;; END IMPLEMENTATION
-    
-
-	
 
 
 	(if (= 0 end)  ;; game is a draw
@@ -306,8 +286,6 @@ if it's max's turn to play."
 	    (* end (turn game) max-wins (if (funcall is-maxs-turn-p game) 1 -1))))))
 
 
-
-;;I've decided to make this function available to you
 
 (defun make-computer-move (game depth)
   "Makes a move automatically by trying alpha-beta on all possible moves and then picking
