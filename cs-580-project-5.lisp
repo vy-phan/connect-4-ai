@@ -1,11 +1,3 @@
-;;;;; CS 580 PROJECT 5 - SUBMISSION
-;;;;; Vy Phan
-;;;;; G00958063
-
-
-
-;;;; ASSIGNMENT 5
-;;;;
 ;;;; Connect-Four Player
 ;;;; Due Midnight, the evening of WEDNESDAY, APRIL 28.
 ;;;;
